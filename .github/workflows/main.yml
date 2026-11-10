@@ -59,14 +59,15 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read
+      contents: write
 
     steps:
-      - name: Restore cached build
-          uses: actions/cache@v5
-          with:
-          key: cached-build-${{github.sha}}
-          path: .
+    
+    - name: Restore cached build
+      uses: actions/cache@v5
+      with:
+        key: cached-build-${{github.sha}}
+        path: .
 
     # https://github.com/marketplace/actions/maven-dependency-tree-dependency-submission
     - name: Update dependency graph
